@@ -1,0 +1,14 @@
+FROM ubuntu:14.04
+MAINTAINER SeanGuan
+LABEL name="ssh-dmeo" version="1.0" author="SeanGuan"
+##安装ssh服务
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir -p /var/run/sshd
+RUN mkdir -p /root/run.sh
+ADD authorized_keys /root/.ssh/authorized_keys
+RUN echo "#!/bin/bash" > /root/run.sh
+RUN echo "/usr/sbin/sshd -D" >> /root/run.sh
+RUN chmod u+x /root/run.sh
+EXPOSE 22
+CMD["/root/run.sh"]
+
