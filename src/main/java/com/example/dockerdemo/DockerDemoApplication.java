@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class DockerDemoApplication  extends SpringBootServletInitializer {
+public class DockerDemoApplication extends SpringBootServletInitializer {
 
-  @RequestMapping(value = "/hello-docker",method = RequestMethod.GET)
-  public String dockerHello(){
-    return "Docker Hello World";
-  }
+    @RequestMapping(value = "/hello-docker", method = RequestMethod.GET)
+    public String dockerHello() {
+        return "Docker Hello World";
+    }
 
-  public static void main(String[] args) {
-    SpringApplication.run(DockerDemoApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(DockerDemoApplication.class, args);
+    }
 
-  @Override
-  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-    return builder.sources(DockerDemoApplication.class);
-  }
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(DockerDemoApplication.class);
+    }
 }
