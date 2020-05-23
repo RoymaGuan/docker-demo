@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: hello-war
+  name: hello-war
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: hello-war
+  template:
+    metadata:
+      labels:
+        run: hello-war
+    spec:
+      containers:
+      - image: war-demo:v1
+        imagePullPolicy: IfNotPresent
+        name: hello-war
+        ports:
+        - containerPort: 8080
+          protocol: TCP
